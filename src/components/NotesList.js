@@ -1,12 +1,9 @@
 import Note from './Note.js'
 
-const NotesList = () => {
+const NotesList = ({ notes }) => {
     return (
     <div className='notes-list'>
-        <Note/>
-        <Note/>
-        <Note/>
-        <Note/>
+        {notes.map((note) => <Note />)}
     </div>
     )
 }
