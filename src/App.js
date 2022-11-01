@@ -4,7 +4,7 @@ import NotesList from './components/NotesList.js'
 
 
 const App = () => {
-  const [notes, seNotes] = useState([
+  const [notes, setNotes] = useState([
     {
       id: nanoid(),
       text: "This is my first note",
@@ -17,13 +17,25 @@ const App = () => {
     },
     {
       id: nanoid(),
-      text: "This is my third note",
+      text: 'This is my third note',
       date: "30/10/2022"
     },
-])
+  ]);
+
+  const addNote = (text) => {
+      const date = new Date();
+      const newNote = {
+        id: nanoid(),
+        text: text,
+        date: date.toLocaleDateString()
+      }
+      const newNotes = [...notes, newNote];
+      setNotes(newNotes);
+  }
+
   return (
     <div className='container'>
-      <NotesList notes={notes}/>
+      <NotesList notes={notes} handleAddNote={addNote}/>
     </div>
   )
 };
